@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SO Management</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+          <div class="me-3">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+              <span class="icon-menu"></span>
+            </button>
+          </div>
+          <div>
+            <a class="navbar-brand brand-logo" href="index.html">
+              <img src="../../assets/images/logo.svg" alt="logo" />
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="index.html">
+              <img src="../../assets/images/logo-mini.svg" alt="logo" />
+            </a>
+          </div>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-top">
+          <ul class="navbar-nav">
+            <li class="nav-item fw-semibold d-none d-lg-block ms-0">
+              <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+              <h3 class="welcome-sub-text">Manage your organization </h3>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <form class="search-form" action="#">
+                <i class="icon-search"></i>
+                <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+              </form>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                <i class="icon-bell"></i>
+                <span class="count"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
+                <a class="dropdown-item py-3 border-bottom">
+                  <p class="mb-0 fw-medium float-start">You have 4 new notifications </p>
+                  <span class="badge badge-pill badge-primary float-end">View all</span>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-alert m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
+                    <p class="fw-light small-text mb-0"> Just now </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-lock-outline m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
+                    <p class="fw-light small-text mb-0"> Private message </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
+                    <p class="fw-light small-text mb-0"> 2 days ago </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+              <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
+                  <p class="mb-1 mt-3 fw-semibold">Allen Moreno</p>
+                  <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                </div>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->                                                                      
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">
+                <i class="menu-icon mdi mdi-grid-large menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/manage_members.html">
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                <span class="menu-title">Manage members</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/send_email.html">
+                <i class="menu-icon mdi mdi-email-outline"></i>
+                <span class="menu-title">Send an e-mail</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/calendar.html">
+                <i class="menu-icon mdi mdi-calendar"></i>
+                <span class="menu-title">Event Calendar</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/vote.html">
+                <i class="menu-icon mdi mdi-vote-outline"></i>
+                <span class="menu-title">Voting</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+                <i class="menu-icon mdi mdi-text-box-outline"></i>
+                <span class="menu-title">Generate reports</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="reports">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="../../pages/generate_memb_reports.html">Membership report</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../../pages/generate_actv_reports.html">Activity report</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/scholarships.html">
+                <i class="menu-icon mdi mdi-school-outline"></i>
+                <span class="menu-title">Rector's scholarship</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../docs/documentation.html">
+                <i class="menu-icon mdi mdi-file-document"></i>
+                <span class="menu-title">Documentation</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Student Information Table</h4>
+                    <button type="button" class="btn btn-primary mb-3" onclick="toggleForm()">Add Member</button>
+                    <div id="studentFormWrapper" style="display: none;">
+                      <form class="forms-sample" id="studentForm">
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control p-input" id="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                          <label for="surname">Surname:</label>
+                          <input type="text" class="form-control p-input" id="surname" placeholder="Enter surname">
+                        </div>
+                        <div class="form-group">
+                          <label for="faculty">Faculty:</label>
+                          <input type="text" class="form-control p-input" id="faculty" placeholder="Enter faculty">
+                        </div>
+                        <div class="form-group">
+                          <label for="studentId">Student ID:</label>
+                          <input type="text" class="form-control p-input" id="studentId" placeholder="Enter student ID">
+                        </div>
+                        <div class="form-group">
+                          <label for="phone">Phone:</label>
+                          <input type="text" class="form-control p-input" id="phone" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="email" class="form-control p-input" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                          <label for="joiningDate">Joining Date:</label>
+                          <input type="date" class="form-control p-input" id="joiningDate">
+                        </div>
+                        <div class="form-group">
+                          <label for="position">Position:</label>
+                          <select class="form-control p-input" id="position">
+                            <option value="president">President</option>
+                            <option value="vice-president">Vice President</option>
+                            <option value="secretary">Secretary</option>
+                            <option value="leader">Leader</option>
+                            <option value="member">Member</option>
+                            <option value="coordinator">Coordinator</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <button type="button" class="btn btn-primary" onclick="addEntry()">Add Entry</button>
+                        </div>
+                      </form>
+                    </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Surname</th>
+                          <th>Faculty</th>
+                          <th>Student ID</th>
+                          <th>Phone</th>
+                          <th>Email</th>
+                          <th>Joining Date</th>
+                          <th>Position</th> <!-- New column for Position -->
+                        </tr>
+                      </thead>
+                      <tbody id="studentTableBody">
+                        <!-- Table data will be dynamically populated here -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Student Organization Management System. IO 2024</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        
+        <script>
+          function addEntry() {
+            var name = document.getElementById("name").value;
+            var surname = document.getElementById("surname").value;
+            var faculty = document.getElementById("faculty").value;
+            var studentId = document.getElementById("studentId").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var joiningDate = document.getElementById("joiningDate").value;
+            var position = document.getElementById("position").value; // Retrieve position
+        
+            // Create a new row for the table
+            var newRow = document.createElement("tr");
+            newRow.innerHTML = "<td>" + name + "</td><td>" + surname + "</td><td>" + faculty + "</td><td>" + studentId + "</td><td>" + phone + "</td><td>" + email + "</td><td>" + joiningDate + "</td><td>" + position + "</td>"; // Include position in row
+        
+            // Append the new row to the table
+            document.getElementById("studentTableBody").appendChild(newRow);
+        
+            // Reset form fields after adding entry
+            document.getElementById("studentForm").reset();
+        
+            // Hide the form after adding entry
+            document.getElementById("studentFormWrapper").style.display = "none";
+          }
+        
+          function toggleForm() {
+            var formWrapper = document.getElementById("studentFormWrapper");
+            if (formWrapper.style.display === "none") {
+              formWrapper.style.display = "block";
+            } else {
+              formWrapper.style.display = "none";
+            }
+          }
+        </script>
+        
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/template.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../assets/js/file-upload.js"></script>
+    <script src="../../assets/js/typeahead.js"></script>
+    <script src="../../assets/js/select2.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>
