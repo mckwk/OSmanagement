@@ -134,7 +134,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../pages/activities.html">
-                <i class="menu-icon mdi mdi mdi-earth"></i>
+                <i class="menu-icon mdi mdi-earth"></i>
                 <span class="menu-title">Manage activities</span>
               </a>
             </li>
@@ -179,31 +179,31 @@
                   <div class="card-body">
                     <h4 class="card-title">Activity Information</h4>
                     <button class="btn btn-primary text-white me-0 mb-3" type="button" onclick="toggleForm()"><i class="mdi mdi-account-plus"></i>Add new activity</button>
-                    <button type="button" class="btn btn-primary text-white me-0 mb-3" onclick=""><i class="icon-download"></i> Generate activity report</button>
+                    <button type="button" class="btn btn-primary text-white me-0 mb-3" onclick="generateActivityReport()"><i class="icon-download"></i> Generate activity report</button>
                     <div id="eventFormWrapper" style="display: none;">
-                      <form class="forms-sample" id="eventForm" onsubmit="addEntry(event)">
+                      <form class="forms-sample" id="eventForm">
                         <div class="form-group">
                           <label for="coordinatorName">Coordinator Name</label>
-                          <input type="text" class="form-control" id="coordinatorName" placeholder="Coordinator Name">
+                          <input type="text" class="form-control" id="coordinatorName" name="coordinator_name" placeholder="Coordinator Name">
                         </div>
                         <div class="form-group">
                           <label for="activityName">Activity Name</label>
-                          <input type="text" class="form-control" id="activityName" placeholder="Activity Name">
+                          <input type="text" class="form-control" id="activityName" name="activity_name" placeholder="Activity Name">
                         </div>
                         <div class="form-group">
                           <label for="participationForm">Form of Participation</label>
-                          <select class="form-control" id="participationForm">
+                          <select class="form-control" id="participationForm" name="participation_form">
                             <option>Participant</option>
                             <option>Organizer</option>
                           </select>
                         </div>
                         <div class="form-group">
                           <label for="organizerName">Organizer Name</label>
-                          <input type="text" class="form-control" id="organizerName" placeholder="Organizer Name">
+                          <input type="text" class="form-control" id="organizerName" name="organizer_name" placeholder="Organizer Name">
                         </div>
                         <div class="form-group">
                           <label for="category">Category</label>
-                          <select class="form-control" id="category">
+                          <select class="form-control" id="category" name="category">
                             <option>Workshops</option>
                             <option>Conferences</option>
                             <option>Seminars</option>
@@ -214,7 +214,7 @@
                         </div>
                         <div class="form-group">
                           <label for="numParticipants">Number of Participants</label>
-                          <select class="form-control" id="numParticipants">
+                          <select class="form-control" id="numParticipants" name="num_participants">
                             <option>1-5</option>
                             <option>6-10</option>
                             <option>11-15</option>
@@ -226,15 +226,15 @@
                         </div>
                         <div class="form-group">
                           <label for="eventDatefrom">Event Date: from</label>
-                          <input type="date" class="form-control" id="eventDatefrom">
+                          <input type="date" class="form-control" id="eventDatefrom" name="event_date_from">
                         </div>
                         <div class="form-group">
                           <label for="eventDateto">Event Date: to</label>
-                          <input type="date" class="form-control" id="eventDateto">
+                          <input type="date" class="form-control" id="eventDateto" name="event_date_to">
                         </div>
                         <div class="form-group">
                           <label for="eventScope">Event Scope</label>
-                          <select class="form-control" id="eventScope">
+                          <select class="form-control" id="eventScope" name="event_scope">
                             <option>University</option>
                             <option>Regional</option>
                             <option>National</option>
@@ -243,7 +243,7 @@
                         </div>
                         <div class="form-group">
                           <label for="eventType">Event Type</label>
-                          <select class="form-control" id="eventType">
+                          <select class="form-control" id="eventType" name="event_type">
                             <option>Promotional</option>
                             <option>Research</option>
                             <option>Scientific</option>
@@ -255,34 +255,34 @@
                         </div>
                         <div class="form-group">
                           <label for="description">Description</label>
-                          <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+                          <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary me-2" onclick="addEntry()">Submit</button>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
                         <button type="button" class="btn btn-light" onclick="cancelEvent()">Cancel</button>
                       </form>
                     </div>
                     <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Coordinator Name</th>
-                          <th>Activity Name</th>
-                          <th>Form of Participation</th>
-                          <th>Organizer Name</th>
-                          <th>Category</th>
-                          <th>Number of Participants</th>
-                          <th>Event Date (from)</th>
-                          <th>Event Date (to)</th>
-                          <th>Event Scope</th>
-                          <th>Event Type</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody id="activityTableBody">
-                        <!-- Table data will be dynamically populated here -->
-                      </tbody>
-                    </table>
-                  </div>
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Coordinator Name</th>
+                            <th>Activity Name</th>
+                            <th>Form of Participation</th>
+                            <th>Organizer Name</th>
+                            <th>Category</th>
+                            <th>Number of Participants</th>
+                            <th>Event Date (from)</th>
+                            <th>Event Date (to)</th>
+                            <th>Event Scope</th>
+                            <th>Event Type</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                          <!-- Table data will be dynamically populated here -->
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -297,61 +297,106 @@
           </footer>
           <!-- partial -->
         </div>
-        
+        <!-- Script for form submission and data handling -->
         <script>
-        function addEntry(event) {
-      event.preventDefault(); // Prevent the default form submission behavior
-    
-    // Retrieve values from the form
-    var coordinatorName = document.getElementById("coordinatorName").value;
-    var activityName = document.getElementById("activityName").value;
-    var participationForm = document.getElementById("participationForm").value;
-    var organizerName = document.getElementById("organizerName").value;
-    var category = document.getElementById("category").value;
-    var numParticipants = document.getElementById("numParticipants").value;
-    var eventDatefrom = document.getElementById("eventDatefrom").value;
-    var eventDateto = document.getElementById("eventDateto").value;
-    var eventScope = document.getElementById("eventScope").value;
-    var eventType = document.getElementById("eventType").value;
-    var description = document.getElementById("description").value;
+          document.getElementById('eventForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            
+            fetch('http://localhost:8000/add_activity', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(error => { throw new Error(error.detail) });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                alert("Activity added successfully");
+                addEntryToTable(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(`An error occurred while adding the activity: ${error.message}`);
+            });
+          });
 
-    // Create a new row in the table
-    var newRow = document.createElement("tr");
-
-    // Append cells to the new row
-    newRow.innerHTML = `
-        <td>${coordinatorName}</td>
-        <td>${activityName}</td>
-        <td>${participationForm}</td>
-        <td>${organizerName}</td>
-        <td>${category}</td>
-        <td>${numParticipants}</td>
-        <td>${eventDatefrom}</td>
-        <td>${eventDateto}</td>
-        <td>${eventScope}</td>
-        <td>${eventType}</td>
-        <td>${description}</td>
-    `;
-
-    // Append the new row to the table body
-    document.getElementById("activityTableBody").appendChild(newRow);
-
-    // Reset the form after submission if needed
-    document.getElementById("eventForm").reset();
+          function addEntryToTable(data) {
+            var newRow = document.createElement("tr");
+            newRow.innerHTML = "<td>" + data.coordinator_name + "</td><td>" + data.activity_name + "</td><td>" + data.participation_form + "</td><td>" + data.organizer_name + "</td><td>" + data.category + "</td><td>" + data.num_participants + "</td><td>" + data.event_date_from + "</td><td>" + data.event_date_to + "</td><td>" + data.event_scope + "</td><td>" + data.event_type + "</td><td>" + data.description + "</td>";
+            document.getElementById("activityTableBody").appendChild(newRow);
           }
 
-function toggleForm() {
-  var formWrapper = document.getElementById("eventFormWrapper");
-  if (formWrapper.style.display === "none" || formWrapper.style.display === "") {
-    formWrapper.style.display = "block";
-  } else {
-    formWrapper.style.display = "none";
-  }
-}
-</script>
+          function toggleForm() {
+            var formWrapper = document.getElementById("eventFormWrapper");
+            if (formWrapper.style.display === "none") {
+              formWrapper.style.display = "block";
+            } else {
+              formWrapper.style.display = "none";
+            }
+          }
 
+          function generateActivityReport() {
+            const fileName = "activity_report.xlsx";
+            fetch(`http://localhost:8000/download/${fileName}`)
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw new Error(error.detail) });
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(`An error occurred while generating the report: ${error.message}`);
+                });
+          }
+
+          window.onload = function() {
+            fetch('http://localhost:8000/activities')
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw new Error(error.detail) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    data.activities.forEach(activity => {
+                        addEntryToTable({
+                            coordinator_name: activity[1], 
+                            activity_name: activity[2],
+                            participation_form: activity[3],
+                            organizer_name: activity[4],
+                            category: activity[5],
+                            num_participants: activity[6],
+                            event_date_from: activity[7],
+                            event_date_to: activity[8],
+                            event_scope: activity[9],
+                            event_type: activity[10],
+                            description: activity[11]
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(`An error occurred while fetching activities: ${error.message}`);
+                });
+          }
         </script>
-        
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

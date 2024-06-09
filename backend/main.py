@@ -26,7 +26,7 @@ app.add_middleware(
 conn = sqlite3.connect('my_database.db', check_same_thread=False)
 cursor = conn.cursor()
 
-# Create table if it doesn't exist
+# Create tables if they don't exist
 cursor.execute('''CREATE TABLE IF NOT EXISTS students (
                   id INTEGER PRIMARY KEY,
                   name TEXT,
@@ -37,6 +37,21 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS students (
                   email TEXT,
                   joining_date TEXT,
                   position TEXT
+                  )''')
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS activities (
+                  id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  coordinator_name TEXT,
+                  activity_name TEXT,
+                  participation_form TEXT,
+                  organizer_name TEXT,
+                  category TEXT,
+                  num_participants TEXT,
+                  event_date_from TEXT,
+                  event_date_to TEXT,
+                  event_scope TEXT,
+                  event_type TEXT,
+                  description TEXT
                   )''')
 conn.commit()
 
@@ -73,30 +88,69 @@ async def add_student(
         logger.error(f"Error adding student: {e}")
         raise HTTPException(status_code=500, detail=f"An error occurred while adding the student: {str(e)}")
 
+@app.post("/add_activity")
+async def add_activity(
+    coordinator_name: str = Form(...),
+    activity_name: str = Form(...),
+    participation_form: str = Form(...),
+    organizer_name: str = Form(...),
+    category: str = Form(...),
+    num_participants: str = Form(...),
+    event_date_from: str = Form(...),
+    event_date_to: str = Form(...),
+    event_scope: str = Form(...),
+    event_type: str = Form(...),
+    description: str = Form(...)
+):
+    try:
+        logger.info(f"Adding activity: {activity_name}")
+        cursor.execute('''INSERT INTO activities (coordinator_name, activity_name, participation_form, organizer_name, category, num_participants, event_date_from, event_date_to, event_scope, event_type, description)
+                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                       (coordinator_name, activity_name, participation_form, organizer_name, category, num_participants, event_date_from, event_date_to, event_scope, event_type, description))
+        conn.commit()
+        logger.info("Activity added successfully")
+        return {
+            "message": "Activity added successfully",
+            "coordinator_name": coordinator_name,
+            "activity_name": activity_name,
+            "participation_form": participation_form,
+            "organizer_name": organizer_name,
+            "category": category,
+            "num_participants": num_participants,
+            "event_date_from": event_date_from,
+            "event_date_to": event_date_to,
+            "event_scope": event_scope,
+            "event_type": event_type,
+            "description": description
+        }
+    except Exception as e:
+        logger.error(f"Error adding activity: {e}")
+        raise HTTPException(status_code=500, detail=f"An error occurred while adding the activity: {str(e)}")
+
+@app.get("/activities")
+async def get_activities():
+    try:
+        cursor.execute('''SELECT * FROM activities''')
+        activities = cursor.fetchall()
+        return JSONResponse(content={"activities": activities})
+    except Exception as e:
+        logger.error(f"Error fetching activities: {e}")
+        raise HTTPException(status_code=500, detail="An error occurred while fetching activities")
+
 @app.get("/download/{file_name}")
 async def download_file(file_name: str):
     try:
         logger.info(f"Generating report and downloading file: {file_name}")
-        # Read new data from text file and insert into SQLite database
-        with open('files/dane.txt', 'r') as file:
-            lines = file.readlines()
-
-        cursor.execute('''DELETE FROM students''')
+        
+        # Ensure the destination file is a copy of the template
         shutil.copy("formatka.xlsx", file_name)
-
-        # Split each line into first name, last name, and ID and insert into SQLite
-        for line in lines:
-            first_name, last_name, id = line.strip().split()
-            cursor.execute('''INSERT OR REPLACE INTO students (name, surname, student_id) VALUES (?, ?, ?)''',
-                           (first_name, last_name, id))
-        conn.commit()
-
+        
         # Load existing Excel file
         wb = load_workbook(file_name)
         ws = wb.active
 
         # Retrieve data from SQLite database
-        cursor.execute('''SELECT * FROM students''')
+        cursor.execute('''SELECT name || " " || surname as FullName, faculty, student_id FROM students''')
         rows = cursor.fetchall()
 
         # Set starting position
@@ -123,6 +177,7 @@ async def download_file(file_name: str):
     except Exception as e:
         logger.error(f"Error generating membership report: {e}")
         raise HTTPException(status_code=500, detail=f"An error occurred while generating the membership report: {str(e)}")
+
 
 @app.get("/students")
 async def get_students():
