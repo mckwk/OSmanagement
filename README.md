@@ -9,5 +9,5 @@ Backend setup(in cmd):
 1. cd (destination to the folder app)\backend
 2. python -m venv venv
 3. venv\Scripts\activate or on mac/linux source venv/bin/activate
-4. pip install uvicorn FastApi openpyxl
+4. pip install -r requirements.txt
 5. uvicorn main:app --reload
