@@ -178,6 +178,47 @@ async def download_file(file_name: str):
         logger.error(f"Error generating membership report: {e}")
         raise HTTPException(status_code=500, detail=f"An error occurred while generating the membership report: {str(e)}")
 
+@app.get("/downloadActivities/{file_name}")
+async def download_file(file_name: str):
+    try:
+        logger.info(f"Generating report and downloading file: {file_name}")
+        
+        # Ensure the destination file is a copy of the template
+        shutil.copy("projekty_i_aktywnosci.xlsx", file_name)
+        
+        # Load existing Excel file
+        wb = load_workbook(file_name)
+        ws = wb.active
+
+        # Retrieve data from SQLite database
+        cursor.execute('''SELECT coordinator_name, activity_name, participation_form, organizer_name, '' as organizer_choice, category, num_participants, event_date_from, event_date_to, event_scope, event_type, '' as A, '' as B, '' as C, '' as D, '' as E, '' as F, '' as G, '' as H, '' as I, '' as J , description FROM activities''')
+        rows = cursor.fetchall()
+
+        # Set starting position
+        start_row = 5
+        start_col = 2
+
+        # Write data from database to existing Excel file
+        for row_idx, row_data in enumerate(rows, start=start_row):
+            for col_idx, value in enumerate(row_data, start=start_col):
+                cell = ws.cell(row=row_idx, column=col_idx)
+                cell.value = value
+
+        # Save changes to the file
+        wb.save(file_name)
+
+        file_path = file_name  # Path to your Excel file, adjust accordingly
+        if not os.path.exists(file_path):
+            raise HTTPException(status_code=404, detail=f"File '{file_name}' not found at path: {file_path}")
+        elif not os.path.isfile(file_path):
+            raise HTTPException(status_code=404, detail=f"Path '{file_path}' is not a file")
+
+        logger.info(f"File {file_name} generated and ready for download")
+        return FileResponse(file_path, filename=file_name)
+    except Exception as e:
+        logger.error(f"Error generating activities report: {e}")
+        raise HTTPException(status_code=500, detail=f"An error occurred while generating the activities report: {str(e)}")
+
 
 @app.get("/students")
 async def get_students():

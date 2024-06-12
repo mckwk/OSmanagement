@@ -341,8 +341,8 @@
           }
 
           function generateActivityReport() {
-            const fileName = "activity_report.xlsx";
-            fetch(`http://localhost:8000/download/${fileName}`)
+            const fileName = "activities_report.xlsx";
+            fetch(`http://localhost:8000/downloadActivities/${fileName}`)
                 .then(response => {
                     if (!response.ok) {
                         return response.json().then(error => { throw new Error(error.detail) });
